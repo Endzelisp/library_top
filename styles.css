@@ -66,13 +66,23 @@ div.wrapper {
 }
 
 div.wrapper > header {
+  display: grid;
+  grid-template-columns: repeat(2, 50vw);
   outline: 1px solid salmon;
+}
+
+div.wrapper > header > button {
+  justify-self: center;
+  margin: 1em;
+  width: max-content;
 }
 
 div.wrapper > main {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-template-rows: repeat(auto-fill, 200px);
+  gap: 1em;
+  padding: 1em;
 }
 
 main > section.book-card {
