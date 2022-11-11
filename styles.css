@@ -59,4 +59,26 @@ select {
   font: inherit;
 }
 
+div.wrapper {
+  display: grid;
+  grid-template-rows: min-content 1fr min-content;
+  min-height: 100vh;
+}
 
+div.wrapper > header {
+  outline: 1px solid salmon;
+}
+
+div.wrapper > main {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-rows: repeat(auto-fill, 200px);
+}
+
+main > section.book-card {
+  border: 1px solid olivedrab;
+}
+
+div.wrapper > footer {
+  outline: 1px solid royalblue;
+}
