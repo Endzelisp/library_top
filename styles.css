@@ -102,6 +102,11 @@ div.form-modal {
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.7);
+  visibility: hidden;
+}
+
+body div.visible {
+  visibility: visible;
 }
 
 div.form-modal > form {
@@ -113,6 +118,7 @@ div.form-modal > form {
 
 div.form-modal > form > span {
   justify-self: end;
+  cursor: pointer;
 }
 
 div.form-modal > form > fieldset {
