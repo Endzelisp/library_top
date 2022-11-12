@@ -80,16 +80,16 @@ div.wrapper > header > button {
 div.wrapper > main {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  grid-template-rows: repeat(auto-fill, 300px);
   gap: 1em;
   padding: 1em;
 }
 
 main > section.book-card {
   display: grid;
-  grid-template-rows: 30% repeat(2, minmax(1.25rem, 1fr)) 2rem;
+  grid-template-rows: 4rem repeat(3, 2rem);
   padding: 0.5em;
-  border: 1px solid olivedrab;
+  box-shadow: 1px -2px 1px 3px #4712a8;
+  height: fit-content;
 }
 
 section.book-card h2 {
