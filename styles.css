@@ -105,11 +105,23 @@ div.form-modal {
 }
 
 div.form-modal > form {
+  display: grid;
+  grid-template-rows: repeat(3, min-content);
   padding: 1em;
   background-color: aliceblue;
+}
+
+div.form-modal > form > span {
+  justify-self: end;
 }
 
 div.form-modal > form > fieldset {
   display: flex;
   flex-direction: column;
+}
+
+div.form-modal > form > button {
+  justify-self: center;
+  margin: 1em 0 0;
+  padding: .5em 2em;
 }
