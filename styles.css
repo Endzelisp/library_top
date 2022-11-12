@@ -79,14 +79,22 @@ div.wrapper > header > button {
 
 div.wrapper > main {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  grid-template-rows: repeat(auto-fill, 200px);
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-rows: repeat(auto-fill, 300px);
   gap: 1em;
   padding: 1em;
 }
 
 main > section.book-card {
+  display: grid;
+  grid-template-rows: 30% repeat(2, minmax(1.25rem, 1fr)) 2rem;
+  padding: 0.5em;
   border: 1px solid olivedrab;
+}
+
+section.book-card h2 {
+  font-size: 1.3rem;
+  margin: 0 0 0.5em;
 }
 
 div.wrapper > footer {
