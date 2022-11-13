@@ -31,3 +31,7 @@ Book.prototype.setInfo = function (title, author, pages) {
   this.autorEl.innerText = `Author: ${author}`;
   this.pagesEl.innerText = `Pages: ${pages}`;
 }
+
+Book.prototype.getCard = function () {
+  return this.sectionEl;
+}
