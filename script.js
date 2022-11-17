@@ -41,3 +41,14 @@ function Book (title, author, pages) {
   this.author = author;
   this.pages = pages;
 }
+
+myLibrary = [];
+
+addBookBtn.addEventListener('pointerdown', function () {
+  const newEntry = new Book(titleInput.value, authorInput.value, pagesInput.value);
+  myLibrary.push(newEntry);
+  const newCard = new Card();
+  newCard.setInfo(newEntry.title, newEntry.author, newEntry.pages);
+  bookContainer.append(newCard.getCard())
+  toggleModal();
+})
