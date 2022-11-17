@@ -16,7 +16,7 @@ function toggleModal () {
 newBookBtn.addEventListener('pointerdown', toggleModal);
 closeModal.addEventListener('pointerdown', toggleModal);
 
-function Book () {
+function Card () {
   this.sectionEl = document.createElement('section');
   this.headerEl = document.createElement('h2');
   this.autorEl = document.createElement('p');
@@ -26,12 +26,12 @@ function Book () {
   this.sectionEl.classList.add('book-card');
 }
 
-Book.prototype.setInfo = function (title, author, pages) {
+Card.prototype.setInfo = function (title, author, pages) {
   this.headerEl.innerText = title;
   this.autorEl.innerText = `Author: ${author}`;
   this.pagesEl.innerText = `Pages: ${pages}`;
 }
 
-Book.prototype.getCard = function () {
+Card.prototype.getCard = function () {
   return this.sectionEl;
 }
