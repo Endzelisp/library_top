@@ -35,3 +35,9 @@ Card.prototype.setInfo = function (title, author, pages) {
 Card.prototype.getCard = function () {
   return this.sectionEl;
 }
+
+function Book (title, author, pages) {
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
+}
