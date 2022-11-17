@@ -44,6 +44,7 @@ function Book (title, author, pages) {
   this.title = title;
   this.author = author;
   this.pages = pages;
+  this.isRead = false;
 }
 
 myLibrary = [
@@ -51,16 +52,19 @@ myLibrary = [
     title: 'Travels with Puff',
     author: 'Richard Bach',
     pages: 222,
+    isRead: true,
   },
   {
     title: 'JavaScript: The Good Parts',
     author: 'Douglas Crockford',
     pages: 163,
+    isRead: false,
   },
   {
     title: 'JavaScript The Definitive Guide',
     author: 'David Flanagan',
     pages: 1245,
+    isRead: false,
   },
 ];
 
