@@ -42,7 +42,23 @@ function Book (title, author, pages) {
   this.pages = pages;
 }
 
-myLibrary = [];
+myLibrary = [
+  {
+    title: 'Travels with Puff',
+    author: 'Richard Bach',
+    pages: 222,
+  },
+  {
+    title: 'JavaScript: The Good Parts',
+    author: 'Douglas Crockford',
+    pages: 163,
+  },
+  {
+    title: 'JavaScript The Definitive Guide',
+    author: 'David Flanagan',
+    pages: 1245,
+  },
+];
 
 addBookBtn.addEventListener('pointerdown', function () {
   const newEntry = new Book(titleInput.value, authorInput.value, pagesInput.value);
@@ -51,4 +67,10 @@ addBookBtn.addEventListener('pointerdown', function () {
   newCard.setInfo(newEntry.title, newEntry.author, newEntry.pages);
   bookContainer.append(newCard.getCard())
   toggleModal();
+})
+
+myLibrary.forEach((item) => {
+  const newCard = new Card();
+  newCard.setInfo(item.title, item.author, item.pages);
+  bookContainer.append(newCard.getCard())
 })
