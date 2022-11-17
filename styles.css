@@ -97,6 +97,20 @@ section.book-card h2 {
   margin: 0 0 0.5em;
 }
 
+section.book-card footer {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}
+
+section.book-card footer > button {
+  justify-self: center;
+  width: 80%;
+}
+
+section.book-card footer > svg {
+  justify-self: end;
+}
+
 div.wrapper > footer {
   outline: 1px solid royalblue;
 }
