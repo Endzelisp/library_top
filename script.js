@@ -43,13 +43,28 @@ function Book (title, author, pages) {
 
 function isRead (card, book) {
   /* isRead function read the isRead property of the Book object to set the
-  card button inner text*/
+  card isReadBtn */
+
+  const button = card.querySelector('button');
 
   if (book.isRead) {
-    card.querySelector('button').innerText = `Read`;
+    button.innerText = `Read`;
+    button.style.backgroundColor = '#4ad956';
   } else {
-    card.querySelector('button').innerText = `Not Read`;
+    button.innerText = `Not Read`;
+    button.style.backgroundColor = '#d45044';
   }
+  
+  button.addEventListener('pointerdown', () => {
+    if (button.innerText === `Read`) {
+      button.innerText = `Not Read`;
+      button.style.backgroundColor = '#d45044';
+    } else if (button.innerText === `Not Read`) {
+        button.innerText = `Read`;
+        button.style.backgroundColor = '#4ad956';
+    }
+  })
+
 }
 
 myLibrary = [
