@@ -41,6 +41,17 @@ function Book (title, author, pages) {
   this.isRead = false;
 }
 
+function isRead (card, book) {
+  /* isRead function read the isRead property of the Book object to set the
+  card button inner text*/
+
+  if (book.isRead) {
+    card.querySelector('button').innerText = `Read`;
+  } else {
+    card.querySelector('button').innerText = `Not Read`;
+  }
+}
+
 myLibrary = [
   {
     title: 'Travels with Puff',
@@ -66,11 +77,13 @@ addBookBtn.addEventListener('pointerdown', function () {
   const newEntry = new Book(titleInput.value, authorInput.value, pagesInput.value);
   myLibrary.push(newEntry);
   const newCard = card(newEntry.title, newEntry.author, newEntry.pages);
-  bookContainer.append(newCard)
+  isRead(newCard, newEntry);
+  bookContainer.append(newCard);
   toggleModal();
 })
 
 myLibrary.forEach((item) => {
   const newCard = card(item.title, item.author, item.pages);
-  bookContainer.append(newCard)
+  isRead(newCard, item);
+  bookContainer.append(newCard);
 })
