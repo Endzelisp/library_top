@@ -64,7 +64,15 @@ function isRead (card, book) {
         button.style.backgroundColor = '#4ad956';
     }
   })
+}
 
+function deleteCard (card) {
+  /* Gives functionality to trash can icon on each card */
+  
+  const trashCan = card.querySelector('svg');
+  trashCan.addEventListener('pointerdown', () => {
+    card.remove();
+  })
 }
 
 myLibrary = [
@@ -93,6 +101,7 @@ addBookBtn.addEventListener('pointerdown', function () {
   myLibrary.push(newEntry);
   const newCard = card(newEntry.title, newEntry.author, newEntry.pages);
   isRead(newCard, newEntry);
+  deleteCard(newCard);
   bookContainer.append(newCard);
   toggleModal();
 })
@@ -100,5 +109,6 @@ addBookBtn.addEventListener('pointerdown', function () {
 myLibrary.forEach((item) => {
   const newCard = card(item.title, item.author, item.pages);
   isRead(newCard, item);
+  deleteCard(newCard);
   bookContainer.append(newCard);
 })
