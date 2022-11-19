@@ -105,10 +105,26 @@ section.book-card footer {
 section.book-card footer > button {
   justify-self: center;
   width: 80%;
+  border: none;
+  border-radius: 5px;
+  outline: 1px solid #333333;
+}
+
+section.book-card footer > button:hover {
+  outline: 2px solid #1a1a1a;
+}
+
+section.book-card footer > button:active {
+  outline: 1px solid #1a1a1a;
 }
 
 section.book-card footer > svg {
   justify-self: end;
+}
+
+section.book-card footer > svg:hover,
+section.book-card footer > svg:focus {
+  transform: scale(1.05);
 }
 
 div.wrapper > footer {
