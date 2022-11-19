@@ -68,7 +68,7 @@ function isRead (card, book) {
 
 function deleteCard (card) {
   /* Gives functionality to trash can icon on each card */
-  
+
   const trashCan = card.querySelector('svg');
   trashCan.addEventListener('pointerdown', () => {
     card.remove();
@@ -103,6 +103,9 @@ addBookBtn.addEventListener('pointerdown', function () {
   isRead(newCard, newEntry);
   deleteCard(newCard);
   bookContainer.append(newCard);
+  titleInput.value = '';
+  authorInput.value = '';
+  pagesInput.value = null;
   toggleModal();
 })
 
