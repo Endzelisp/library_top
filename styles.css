@@ -65,7 +65,7 @@ select {
   --header-bg-clr: #2e475d;
   --header-border-clr: #b7ecec;
   --white-fnt-clr: #ffffff;
-  --orange-bg-clr: #e45e20;
+  --cards-bg-clr: #ffffff;
   --lobster-fnt-fam: 'Lobster', cursive;
   --cards-fnt-fam: 'Merriweather Sans', sans-serif;
   --opaque-red: #e63946;
@@ -118,6 +118,10 @@ div.wrapper > main {
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 2em;
   padding: 1em;
+  background: url(./img/bookshelf.png);
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: center;
 }
 
 main > section.book-card {
@@ -126,6 +130,7 @@ main > section.book-card {
   padding: 0.5em;
   height: fit-content;
   font-family: var(--cards-fnt-fam);
+  background-color: var(--cards-bg-clr);
   box-shadow: -3px 2px 0 4px var(--header-bg-clr);
 }
 
