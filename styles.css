@@ -67,6 +67,7 @@ select {
   --white-fnt-clr: #ffffff;
   --orange-bg-clr: #e45e20;
   --lobster-fnt-fam: 'Lobster', cursive;
+  --cards-fnt-fam: 'Merriweather Sans', sans-serif;
   --opaque-red: #e63946;
   --opaque-white: #f3e2cb;
 }
@@ -115,7 +116,7 @@ div.wrapper > header > button:hover {
 div.wrapper > main {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1em;
+  gap: 2em;
   padding: 1em;
 }
 
@@ -123,8 +124,9 @@ main > section.book-card {
   display: grid;
   grid-template-rows: 4rem repeat(3, 2rem);
   padding: 0.5em;
-  box-shadow: 1px -2px 1px 3px #4712a8;
   height: fit-content;
+  font-family: var(--cards-fnt-fam);
+  box-shadow: -3px 2px 0 4px var(--header-bg-clr);
 }
 
 section.book-card h2 {
