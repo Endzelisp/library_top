@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Merriweather+Sans&display=swap');
+
 /*CSS Reset form https://piccalil.li/blog/a-modern-css-reset/*/
 
 /* Box sizing rules */
@@ -59,6 +61,16 @@ select {
   font: inherit;
 }
 
+:root {
+  --header-bg-clr: #2e475d;
+  --header-border-clr: #b7ecec;
+  --white-fnt-clr: #ffffff;
+  --orange-bg-clr: #e45e20;
+  --lobster-fnt-fam: 'Lobster', cursive;
+  --opaque-red: #e63946;
+  --opaque-white: #f3e2cb;
+}
+
 div.wrapper {
   display: grid;
   grid-template-rows: min-content 1fr min-content;
@@ -68,13 +80,36 @@ div.wrapper {
 div.wrapper > header {
   display: grid;
   grid-template-columns: repeat(2, 50vw);
-  outline: 1px solid salmon;
+  background-color: var(--header-bg-clr);
+  border-bottom: .7rem solid var(--header-border-clr);
+}
+
+div.wrapper > header > h1 {
+  align-self: center;
+  margin-left: 1rem;
+  font-family: var(--lobster-fnt-fam);
+  font-size: 3rem;
+  color: var(--opaque-red);
+  text-shadow: 3px -2px 0 var(--opaque-white);
 }
 
 div.wrapper > header > button {
   justify-self: center;
-  margin: 1em;
-  width: max-content;
+  align-self: center;
+  margin: 1em 0;
+  padding: .5em 1em;
+  font-size: 1.15rem;
+  font-weight: 600;
+  border: none;
+  background-color: var(--opaque-red);
+  color: var(--white-fnt-clr);
+  transition: all 250ms ease-in;
+}
+
+div.wrapper > header > button:hover {
+    box-shadow:
+      0 0 0 3px var(--opaque-white),
+      0 0 0 5px var(--opaque-red);
 }
 
 div.wrapper > main {
