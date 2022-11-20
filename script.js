@@ -76,6 +76,13 @@ function isRead (card, book) {
   })
 }
 
+function indexNodeList (selector) {
+  const nodeList = document.querySelectorAll(selector);
+  nodeList.forEach((item, index) => {
+    item.setAttribute('data-index', index);
+  });
+}
+
 function deleteCard (card) {
   /* Gives functionality to trash can icon on each card */
 
@@ -113,6 +120,7 @@ addBookBtn.addEventListener('pointerdown', function () {
   isRead(newCard, newEntry);
   deleteCard(newCard);
   bookContainer.append(newCard);
+  indexNodeList('main > section.book-card');
   titleInput.value = '';
   authorInput.value = '';
   pagesInput.value = null;
@@ -124,4 +132,5 @@ myLibrary.forEach((item) => {
   isRead(newCard, item);
   deleteCard(newCard);
   bookContainer.append(newCard);
+  indexNodeList('main > section.book-card');
 })
