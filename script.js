@@ -1,13 +1,18 @@
-const bookContainer = document.querySelector('div.wrapper > main');
 const newBookBtn = document.querySelector('div.wrapper > header > button');
-const modalForm = document.querySelector('div.form-modal');
-const closeModal = document.querySelector('div.form-modal > form > span');
+const bookContainer = document.querySelector('div.wrapper > main');
 
-const formFieldset = document.querySelector('div.form-modal > form > fieldset');
-const addBookBtn = document.querySelector('div.form-modal > form > button');
+const modalForm = document.querySelector('div.form-modal');
+const addBookBtn = modalForm.querySelector('form > button');
+const closeModal = modalForm.querySelector('form > span');
+
+const formFieldset = modalForm.querySelector('form > fieldset');
 const titleInput = formFieldset.querySelector('input[id="book-title"]');
 const authorInput = formFieldset.querySelector('input[id="book-author"]');
 const pagesInput = formFieldset.querySelector('input[id="book-pages"]');
+
+const svgTrashCanIcon = `<svg style="width:24px;height:24px" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,
+            19V7H6V19M8,9H16V19H8V9M15.5,4L14.5,3H9.5L8.5,4H5V6H19V4H15.5Z" />`;
 
 function toggleModal () {
   modalForm.classList.toggle('visible');
@@ -27,8 +32,7 @@ function card (title, author, pages) {
   authorEl.innerText = `Author: ${author}`;
   pagesEl.innerText = `Pages: ${pages}`;
   footerEl.append(isReadBtn);
-  footerEl.innerHTML += `<svg style="width:24px;height:24px" viewBox="0 0 24 24">
-            <path fill="currentColor" d="M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19M8,9H16V19H8V9M15.5,4L14.5,3H9.5L8.5,4H5V6H19V4H15.5Z" />`
+  footerEl.innerHTML += svgTrashCanIcon;
   sectionEl.append(headerEl, authorEl, pagesEl, footerEl);
   sectionEl.classList.add('book-card');
   return sectionEl;
