@@ -21,16 +21,16 @@ function Book (title, author, pages) {
   this.isRead = false;
 }
 
-function card (title, author, pages) {
+function card (object) {
   const sectionEl = document.createElement('section');
   const headerEl = document.createElement('h2');
   const authorEl = document.createElement('p');
   const pagesEl = document.createElement('p');
   const footerEl = document.createElement('footer');
   const isReadBtn = document.createElement('button');
-  headerEl.innerText = title;
-  authorEl.innerText = `Author: ${author}`;
-  pagesEl.innerText = `Pages: ${pages}`;
+  headerEl.innerText = object.title;
+  authorEl.innerText = `Author: ${object.author}`;
+  pagesEl.innerText = `Pages: ${object.pages}`;
   footerEl.append(isReadBtn);
   footerEl.innerHTML += svgTrashCanIcon;
   sectionEl.append(headerEl, authorEl, pagesEl, footerEl);
@@ -58,10 +58,12 @@ function isRead (card, book) {
     if (button.innerText === `Read`) {
       button.innerText = `Not Read`;
       button.style.backgroundColor = isReadColor.not;
+      book.isRead = false;
     } 
     else if (button.innerText === `Not Read`) {
       button.innerText = `Read`;
       button.style.backgroundColor = isReadColor.yes;
+      book.isRead = true;
     }
   })
 }
@@ -116,7 +118,7 @@ closeModal.addEventListener('pointerdown', toggleModal);
 addBookBtn.addEventListener('pointerdown', function () {
   const newEntry = new Book(titleInput.value, authorInput.value, pagesInput.value);
   myLibrary.push(newEntry);
-  const newCard = card(newEntry.title, newEntry.author, newEntry.pages);
+  const newCard = card(newEntry);
   isRead(newCard, newEntry);
   bookContainer.append(newCard);
   setTrashCan(newCard, myLibrary);
@@ -132,7 +134,7 @@ bookContainer.addEventListener('pointerdown', () => {
 })
 
 myLibrary.forEach((item, index) => {
-  const newCard = card(item.title, item.author, item.pages);
+  const newCard = card(item);
   isRead(newCard, item);
   bookContainer.append(newCard);
   newCard.setAttribute('data-index', index);
