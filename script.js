@@ -87,8 +87,8 @@ function setTrashCan (card, arr) {
   /* Gives functionality to trash can icon on each card */
 
   const trashCan = card.querySelector('svg');
-  arrIndexToDelete = card.getAttribute('data-index');
   trashCan.addEventListener('pointerdown', () => {
+    arrIndexToDelete = card.getAttribute('data-index');
     arr.splice(arrIndexToDelete, 1);
     card.remove();
   })  
@@ -129,11 +129,14 @@ addBookBtn.addEventListener('pointerdown', function () {
   toggleModal();
 })
 
-myLibrary.forEach((item) => {
+myLibrary.forEach((item, index) => {
   const newCard = card(item.title, item.author, item.pages);
   isRead(newCard, item);
   bookContainer.append(newCard);
+  newCard.setAttribute('data-index', index);
   setTrashCan(newCard, myLibrary);
 })
 
-indexNodeList('main > section.book-card');
+bookContainer.addEventListener('pointerdown', () => {
+  indexNodeList('main > section.book-card');
+})
