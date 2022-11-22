@@ -135,3 +135,5 @@ myLibrary.forEach((item) => {
   bookContainer.append(newCard);
   setTrashCan(newCard, myLibrary);
 })
+
+indexNodeList('main > section.book-card');
