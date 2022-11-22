@@ -14,12 +14,12 @@ const svgTrashCanIcon = `<svg style="width:24px;height:24px" viewBox="0 0 24 24"
             <path fill="currentColor" d="M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,
             19V7H6V19M8,9H16V19H8V9M15.5,4L14.5,3H9.5L8.5,4H5V6H19V4H15.5Z" />`;
 
-function toggleModal () {
-  modalForm.classList.toggle('visible');
+function Book (title, author, pages) {
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
+  this.isRead = false;
 }
-
-newBookBtn.addEventListener('pointerdown', toggleModal);
-closeModal.addEventListener('pointerdown', toggleModal);
 
 function card (title, author, pages) {
   const sectionEl = document.createElement('section');
@@ -38,24 +38,15 @@ function card (title, author, pages) {
   return sectionEl;
 }
 
-function Book (title, author, pages) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.isRead = false;
-}
-
 function isRead (card, book) {
   /* isRead function reads the isRead property of the Book object to set the
   card isReadBtn */
 
   const button = card.querySelector('button');
-
   const isReadColor = {
     yes: `#4ad956`,
     not: `#d45044`,
   }
-
   if (book.isRead) {
     button.innerText = `Read`;
     button.style.backgroundColor = isReadColor.yes;
@@ -63,7 +54,6 @@ function isRead (card, book) {
     button.innerText = `Not Read`;
     button.style.backgroundColor = isReadColor.not;
   }
-  
   button.addEventListener('pointerdown', () => {
     if (button.innerText === `Read`) {
       button.innerText = `Not Read`;
@@ -94,6 +84,10 @@ function setTrashCan (card, arr) {
   })  
 }
 
+function toggleModal () {
+  modalForm.classList.toggle('visible');
+}
+
 myLibrary = [
   {
     title: 'Travels with Puff',
@@ -115,6 +109,10 @@ myLibrary = [
   },
 ];
 
+newBookBtn.addEventListener('pointerdown', toggleModal);
+
+closeModal.addEventListener('pointerdown', toggleModal);
+
 addBookBtn.addEventListener('pointerdown', function () {
   const newEntry = new Book(titleInput.value, authorInput.value, pagesInput.value);
   myLibrary.push(newEntry);
@@ -129,14 +127,14 @@ addBookBtn.addEventListener('pointerdown', function () {
   toggleModal();
 })
 
+bookContainer.addEventListener('pointerdown', () => {
+  indexNodeList('main > section.book-card');
+})
+
 myLibrary.forEach((item, index) => {
   const newCard = card(item.title, item.author, item.pages);
   isRead(newCard, item);
   bookContainer.append(newCard);
   newCard.setAttribute('data-index', index);
   setTrashCan(newCard, myLibrary);
-})
-
-bookContainer.addEventListener('pointerdown', () => {
-  indexNodeList('main > section.book-card');
 })
