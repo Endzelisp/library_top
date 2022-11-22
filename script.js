@@ -83,13 +83,15 @@ function indexNodeList (selector) {
   });
 }
 
-function deleteCard (card) {
+function setTrashCan (card, arr) {
   /* Gives functionality to trash can icon on each card */
 
   const trashCan = card.querySelector('svg');
+  arrIndexToDelete = card.getAttribute('data-index');
   trashCan.addEventListener('pointerdown', () => {
+    arr.splice(arrIndexToDelete, 1);
     card.remove();
-  })
+  })  
 }
 
 myLibrary = [
@@ -118,8 +120,8 @@ addBookBtn.addEventListener('pointerdown', function () {
   myLibrary.push(newEntry);
   const newCard = card(newEntry.title, newEntry.author, newEntry.pages);
   isRead(newCard, newEntry);
-  deleteCard(newCard);
   bookContainer.append(newCard);
+  setTrashCan(newCard, myLibrary);
   indexNodeList('main > section.book-card');
   titleInput.value = '';
   authorInput.value = '';
@@ -130,7 +132,6 @@ addBookBtn.addEventListener('pointerdown', function () {
 myLibrary.forEach((item) => {
   const newCard = card(item.title, item.author, item.pages);
   isRead(newCard, item);
-  deleteCard(newCard);
   bookContainer.append(newCard);
-  indexNodeList('main > section.book-card');
+  setTrashCan(newCard, myLibrary);
 })
