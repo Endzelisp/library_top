@@ -211,3 +211,15 @@ div.form-modal > form > button {
   margin: 1em 0 0;
   padding: .5em 2em;
 }
+
+div.wrapper > footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
+  text-align: center;
+  font-family: var(--lobster-fnt-fam);
+  font-size: 1.5rem;
+  background-color: var(--header-bg-clr);
+  color: var(--opaque-white);
+}
