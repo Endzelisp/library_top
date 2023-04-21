@@ -1,5 +1,6 @@
 const newBookBtn = document.querySelector('[data-button="new-book"]')
 const bookContainer = document.querySelector('[data-container="main"]')
+const templateBookCard = document.querySelector('[data-template="book-card"]')
 
 const modalForm = document.querySelector('div.form-modal')
 const addBookBtn = modalForm.querySelector('form > button')
@@ -9,10 +10,6 @@ const formFieldset = modalForm.querySelector('form > fieldset')
 const titleInput = formFieldset.querySelector('input[id="book-title"]')
 const authorInput = formFieldset.querySelector('input[id="book-author"]')
 const pagesInput = formFieldset.querySelector('input[id="book-pages"]')
-
-const svgTrashCanIcon = `<svg style="width:24px;height:24px" viewBox="0 0 24 24">
-            <path fill="currentColor" d="M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,
-            19V7H6V19M8,9H16V19H8V9M15.5,4L14.5,3H9.5L8.5,4H5V6H19V4H15.5Z" />`
 
 class Book {
   title
@@ -27,20 +24,14 @@ class Book {
 }
 
 function card(object) {
-  const sectionEl = document.createElement('section')
-  const headerEl = document.createElement('h2')
-  const authorEl = document.createElement('p')
-  const pagesEl = document.createElement('p')
-  const footerEl = document.createElement('footer')
-  const isReadBtn = document.createElement('button')
-  headerEl.innerText = object.title
-  authorEl.innerText = `Author: ${object.author}`
-  pagesEl.innerText = `Pages: ${object.pages}`
-  footerEl.append(isReadBtn)
-  footerEl.innerHTML += svgTrashCanIcon
-  sectionEl.append(headerEl, authorEl, pagesEl, footerEl)
-  sectionEl.classList.add('book-card')
-  return sectionEl
+  const newCard = templateBookCard.content.cloneNode(true)
+  const headerEl = newCard.querySelector('[data-info="title"]')
+  const authorEl = newCard.querySelector('[data-info="author"]')
+  const pagesEl = newCard.querySelector('[data-info="pages"]')
+  headerEl.textContent = object.title
+  authorEl.textContent = `Author: ${object.author}`
+  pagesEl.textContent = `Pages: ${object.pages}`
+  return newCard.querySelector('section')
 }
 
 function isRead(card, book) {
