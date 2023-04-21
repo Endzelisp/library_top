@@ -1,51 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="author" content="Armando Endzelis Prieto">
-  <meta name="description" content="Library app project is part of the curriculum of The Odin Project">
-  <link rel="stylesheet" href="./styles.css">
-  <script src="./script.js" defer></script>
-  <title>Library Project</title>
-</head>
-<body>
-  <div class="wrapper">
-    <header>
-      <h1>My Bookshelf</h1>
-      <button><em>New Book</em></button>
-    </header>
-    <main></main>
-    <footer>
-      <p>WebApp created by Armando Endzelis 2022</p>
-      <a href="https://github.com/Endzelisp/library_top"
-        target="_blank"
-        rel="noopener noreferrer">
-          <img src="./img/github-logo.png" alt="github-logo" height="30">
-      </a>
-    </footer>
-  </div>
-  <div class="form-modal">
-    <form action="#">
-      <span>
-        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-          <path
-            fill="currentColor"
-            d="M19,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Armando Endzelis Prieto" />
+    <meta
+      name="description"
+      content="Library app project is part of the curriculum of The Odin Project"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./script.js" defer></script>
+    <title>Library Project</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>My Bookshelf</h1>
+        <button data-button="new-book"><em>New Book</em></button>
+      </header>
+      <main data-container="main"></main>
+      <footer>
+        <p>WebApp created by Armando Endzelis 2022</p>
+        <a
+          href="https://github.com/Endzelisp/library_top"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src="./img/github-logo.png" alt="github-logo" height="30" />
+        </a>
+      </footer>
+    </div>
+    <div class="form-modal">
+      <form action="#">
+        <span>
+          <svg style="width: 24px; height: 24px" viewBox="0 0 24 24">
+            <path
+              fill="currentColor"
+              d="M19,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,
             2 0 0,0 19,3M19,19H5V5H19V19M17,8.4L13.4,12L17,15.6L15.6,17L12,
-            13.4L8.4,17L7,15.6L10.6,12L7,8.4L8.4,7L12,10.6L15.6,7L17,8.4Z" />
-        </svg>
-      </span>
-      <fieldset>
-        <label for="book-tile">Title</label>
-        <input type="text" id="book-title" autocomplete="off" required>
-        <label for="book-author"> Author</label>
-        <input type="text" id="book-author" autocomplete="off" required>
-        <label for="book-pages">Pages</label>
-        <input type="num" id="book-pages" required>
-      </fieldset>
-      <button>Add</button>
-    </form>
-  </div>
-</body>
+            13.4L8.4,17L7,15.6L10.6,12L7,8.4L8.4,7L12,10.6L15.6,7L17,8.4Z"
+            />
+          </svg>
+        </span>
+        <fieldset>
+          <label for="book-tile">Title</label>
+          <input type="text" id="book-title" autocomplete="off" required />
+          <label for="book-author"> Author</label>
+          <input type="text" id="book-author" autocomplete="off" required />
+          <label for="book-pages">Pages</label>
+          <input type="num" id="book-pages" required />
+        </fieldset>
+        <button>Add</button>
+      </form>
+    </div>
+  </body>
 </html>
