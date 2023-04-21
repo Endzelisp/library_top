@@ -1,5 +1,5 @@
-const newBookBtn = document.querySelector('div.wrapper > header > button')
-const bookContainer = document.querySelector('div.wrapper > main')
+const newBookBtn = document.querySelector('[data-button="new-book"]')
+const bookContainer = document.querySelector('[data-container="main"]')
 
 const modalForm = document.querySelector('div.form-modal')
 const addBookBtn = modalForm.querySelector('form > button')
