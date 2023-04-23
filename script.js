@@ -11,6 +11,27 @@ const titleInput = formFieldset.querySelector('input[id="book-title"]')
 const authorInput = formFieldset.querySelector('input[id="book-author"]')
 const pagesInput = formFieldset.querySelector('input[id="book-pages"]')
 
+const myLibrary = [
+  {
+    title: 'Travels with Puff',
+    author: 'Richard Bach',
+    pages: 222,
+    isRead: true,
+  },
+  {
+    title: 'JavaScript: The Good Parts',
+    author: 'Douglas Crockford',
+    pages: 163,
+    isRead: false,
+  },
+  {
+    title: 'JavaScript The Definitive Guide',
+    author: 'David Flanagan',
+    pages: 1245,
+    isRead: false,
+  },
+]
+
 class Book {
   title
   author
@@ -84,27 +105,6 @@ function setTrashCan(card, arr) {
 function toggleModal() {
   modalForm.classList.toggle('visible')
 }
-
-myLibrary = [
-  {
-    title: 'Travels with Puff',
-    author: 'Richard Bach',
-    pages: 222,
-    isRead: true,
-  },
-  {
-    title: 'JavaScript: The Good Parts',
-    author: 'Douglas Crockford',
-    pages: 163,
-    isRead: false,
-  },
-  {
-    title: 'JavaScript The Definitive Guide',
-    author: 'David Flanagan',
-    pages: 1245,
-    isRead: false,
-  },
-]
 
 newBookBtn.addEventListener('pointerdown', toggleModal)
 
