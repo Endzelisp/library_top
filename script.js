@@ -32,7 +32,18 @@ const myLibrary = [
   },
 ]
 
+/**
+ * @class
+ * Base class to create a new book info object
+ */
 class Book {
+  /**
+   * @param { string } title Book's title
+   * @param { string } author Book's title
+   * @param { number } pages Number of pages the book have
+   * @param { boolean } isRead describe if the book is already read or not
+   */
+
   title
   author
   pages
