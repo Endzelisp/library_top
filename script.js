@@ -23,14 +23,14 @@ class Book {
   }
 }
 
-function card(object) {
+function card({ title, author, pages }) {
   const newCard = templateBookCard.content.cloneNode(true)
   const headerEl = newCard.querySelector('[data-info="title"]')
   const authorEl = newCard.querySelector('[data-info="author"]')
   const pagesEl = newCard.querySelector('[data-info="pages"]')
-  headerEl.textContent = object.title
-  authorEl.textContent = `Author: ${object.author}`
-  pagesEl.textContent = `Pages: ${object.pages}`
+  headerEl.textContent = title
+  authorEl.textContent = `Author: ${author}`
+  pagesEl.textContent = `Pages: ${pages}`
   return newCard.querySelector('section')
 }
 
