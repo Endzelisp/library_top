@@ -33,21 +33,21 @@ const myLibrary = [
 ]
 
 /**
+ * Create an object with detailed info about a book
  * @class
- * Base class to create a new book info object
  */
 class Book {
+  title
+  author
+  pages
+  isRead = false
+
   /**
    * @param { string } title Book's title
    * @param { string } author Book's title
    * @param { number } pages Number of pages the book have
    * @param { boolean } isRead describe if the book is already read or not
    */
-
-  title
-  author
-  pages
-  isRead = false
   constructor(title, author, pages) {
     this.title = title
     this.author = author
@@ -66,33 +66,41 @@ function card({ title, author, pages }) {
   return newCard.querySelector('section')
 }
 
-function isRead(card, book) {
-  /* isRead function reads the isRead property of the Book object to set the
-  card isReadBtn */
-
+/**
+ * Reads the isRead property of a Book instance
+ * to set the card button that shows if the book
+ * is already read and allow to toggle the state
+ * @param { HTMLElement } card
+ * @param { Object } book
+ */
+function setIsReadBtn(card, book) {
   const button = card.querySelector('button')
-  const isReadColor = {
-    yes: `#4ad956`,
-    not: `#d45044`,
-  }
-  if (book.isRead) {
-    button.innerText = `Read`
-    button.style.backgroundColor = isReadColor.yes
-  } else {
-    button.innerText = `Not Read`
-    button.style.backgroundColor = isReadColor.not
-  }
-  button.addEventListener('pointerdown', () => {
-    if (button.innerText === `Read`) {
-      button.innerText = `Not Read`
-      button.style.backgroundColor = isReadColor.not
-      book.isRead = false
-    } else if (button.innerText === `Not Read`) {
-      button.innerText = `Read`
-      button.style.backgroundColor = isReadColor.yes
+
+  function toggleRead() {
+    const isRead = this.dataset.read === 'true' ? true : false
+    if (!isRead) {
+      button.textContent = 'Read'
+      button.classList.add('is-read')
+      this.dataset.read = 'true'
       book.isRead = true
+      return
     }
-  })
+    button.textContent = 'Not Read'
+    button.classList.remove('is-read')
+    this.dataset.read = 'false'
+    book.isRead = false
+  }
+
+  button.addEventListener('pointerdown', toggleRead.bind(card))
+
+  if (!book.isRead) {
+    button.textContent = 'Not Read'
+    card.dataset.read = 'false'
+    return
+  }
+  button.textContent = 'Read'
+  button.classList.add('is-read')
+  card.dataset.read = 'true'
 }
 
 function indexNodeList(selector) {
@@ -129,7 +137,7 @@ addBookBtn.addEventListener('pointerdown', function () {
   )
   myLibrary.push(newEntry)
   const newCard = card(newEntry)
-  isRead(newCard, newEntry)
+  setIsReadBtn(newCard, newEntry)
   bookContainer.append(newCard)
   setTrashCan(newCard, myLibrary)
   indexNodeList('main > section.book-card')
@@ -145,7 +153,7 @@ bookContainer.addEventListener('pointerdown', () => {
 
 myLibrary.forEach((item, index) => {
   const newCard = card(item)
-  isRead(newCard, item)
+  setIsReadBtn(newCard, item)
   bookContainer.append(newCard)
   newCard.setAttribute('data-index', index)
   setTrashCan(newCard, myLibrary)
