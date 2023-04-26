@@ -144,15 +144,20 @@ section.book-card footer {
   grid-template-columns: 3fr 1fr;
 }
 
-section.book-card footer > button {
+.read-button {
   justify-self: center;
   width: 80%;
+  background-color: var(--opaque-red);
   border: none;
   border-radius: 5px;
   outline: 1px solid #333333;
 }
 
-section.book-card footer > button:hover {
+.is-read {
+  background-color: #4ad956;
+}
+
+.read-button:hover {
   outline: 2px solid #1a1a1a;
 }
 
