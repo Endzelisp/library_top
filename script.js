@@ -1,15 +1,44 @@
-const newBookBtn = document.querySelector('[data-button="new-book"]')
-const bookContainer = document.querySelector('[data-container="main"]')
-const templateBookCard = document.querySelector('[data-template="book-card"]')
+class UI {
+  static get newBookBtn() {
+    return document.querySelector('[data-button="new-book"]')
+  }
 
-const modalForm = document.querySelector('div.form-modal')
-const addBookBtn = modalForm.querySelector('form > button')
-const closeModal = modalForm.querySelector('form > span')
+  static get bookContainer() {
+    return document.querySelector('[data-container="main"]')
+  }
 
-const formFieldset = modalForm.querySelector('form > fieldset')
-const titleInput = formFieldset.querySelector('input[id="book-title"]')
-const authorInput = formFieldset.querySelector('input[id="book-author"]')
-const pagesInput = formFieldset.querySelector('input[id="book-pages"]')
+  static get templateBookCard() {
+    return document.querySelector('[data-template="book-card"]')
+  }
+
+  static get modalForm() {
+    return document.querySelector('div.form-modal')
+  }
+
+  static get addBookBtn() {
+    return UI.modalForm.querySelector('form > button')
+  }
+
+  static get closeModal() {
+    return UI.modalForm.querySelector('form > span')
+  }
+
+  static get formFieldset() {
+    return UI.modalForm.querySelector('form > fieldset')
+  }
+
+  static get titleInput() {
+    return UI.formFieldset.querySelector('input[id="book-title"]')
+  }
+
+  static get authorInput() {
+    return UI.formFieldset.querySelector('input[id="book-author"]')
+  }
+
+  static get pagesInput() {
+    return UI.formFieldset.querySelector('input[id="book-pages"]')
+  }
+}
 
 const myLibrary = [
   {
@@ -56,7 +85,7 @@ class Book {
 }
 
 function card({ title, author, pages }) {
-  const newCard = templateBookCard.content.cloneNode(true)
+  const newCard = UI.templateBookCard.content.cloneNode(true)
   const headerEl = newCard.querySelector('[data-info="title"]')
   const authorEl = newCard.querySelector('[data-info="author"]')
   const pagesEl = newCard.querySelector('[data-info="pages"]')
@@ -122,14 +151,14 @@ function setTrashCan(card, arr) {
 }
 
 function toggleModal() {
-  modalForm.classList.toggle('visible')
+  UI.modalForm.classList.toggle('visible')
 }
 
-newBookBtn.addEventListener('pointerdown', toggleModal)
+UI.newBookBtn.addEventListener('pointerdown', toggleModal)
 
-closeModal.addEventListener('pointerdown', toggleModal)
+UI.closeModal.addEventListener('pointerdown', toggleModal)
 
-addBookBtn.addEventListener('pointerdown', function () {
+UI.addBookBtn.addEventListener('pointerdown', function () {
   const newEntry = new Book(
     titleInput.value,
     authorInput.value,
@@ -138,7 +167,7 @@ addBookBtn.addEventListener('pointerdown', function () {
   myLibrary.push(newEntry)
   const newCard = card(newEntry)
   setIsReadBtn(newCard, newEntry)
-  bookContainer.append(newCard)
+  UI.bookContainer.append(newCard)
   setTrashCan(newCard, myLibrary)
   indexNodeList('main > section.book-card')
   titleInput.value = ''
@@ -147,14 +176,14 @@ addBookBtn.addEventListener('pointerdown', function () {
   toggleModal()
 })
 
-bookContainer.addEventListener('pointerdown', () => {
+UI.bookContainer.addEventListener('pointerdown', () => {
   indexNodeList('main > section.book-card')
 })
 
 myLibrary.forEach((item, index) => {
   const newCard = card(item)
   setIsReadBtn(newCard, item)
-  bookContainer.append(newCard)
+  UI.bookContainer.append(newCard)
   newCard.setAttribute('data-index', index)
   setTrashCan(newCard, myLibrary)
 })
